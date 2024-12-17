@@ -14,3 +14,9 @@ pa_rb.InitializeRingBuffer(&rb, i32(size_of(f32)), i32(RB_SIZE), raw_data(rb_dat
 pa_rb.WriteRingBuffer(&rb, raw_data(input), i32(len(input)))
 
 ```
+
+### Build portaudio ringbuffer on MacOS
+```sh
+clang pa_ringbuffer.c pa_ringbuffer.h -c -O2 -Os -fPIC
+ar rcs pa_ringbuffer.a pa_ringbuffer.o
+```
