@@ -20,3 +20,9 @@ pa_rb.WriteRingBuffer(&rb, raw_data(input), i32(len(input)))
 clang pa_ringbuffer.c pa_ringbuffer.h -c -O2 -Os -fPIC
 ar rcs pa_ringbuffer.a pa_ringbuffer.o
 ```
+
+### Building on Windows with MSVC
+```
+cl /c /O2 /Fo:pa_ringbuffer.obj pa_ringbuffer.c
+lib /OUT:pa_ringbuffer.lib pa_ringbuffer.obj
+```
