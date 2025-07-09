@@ -15,7 +15,7 @@ pa_rb.WriteRingBuffer(&rb, raw_data(input), i32(len(input)))
 
 ```
 
-### Build portaudio ringbuffer on MacOS
+### Build portaudio ringbuffer on MacOS/Linux
 ```sh
 clang pa_ringbuffer.c pa_ringbuffer.h -c -O2 -Os -fPIC
 ar rcs pa_ringbuffer.a pa_ringbuffer.o
