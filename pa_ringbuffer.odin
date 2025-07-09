@@ -1,7 +1,7 @@
 package pa_ringbuffer
 
 
-when ODIN_OS == .Darwin {
+when ODIN_OS == .Darwin || ODIN_OS == .Linux {
 	// Building on Mac:
 	//    clang pa_ringbuffer.c pa_ringbuffer.h -c -O2 -Os -fPIC
 	//    ar rcs pa_ringbuffer.a pa_ringbuffer.o
