@@ -9,11 +9,12 @@ import pa_rb "./pa_ringbuffer"
 
 rb := pa_rb.RingBuffer{}
 rb_data := make([]u8, RB_SIZE * size_of(f32))
-pa_rb.InitializeRingBuffer(&rb, i32(size_of(f32)), i32(RB_SIZE), raw_data(rb_data))
+pa_rb.InitializeRingBuffer(&rb, pa_rb.rb_size_t(size_of(f32)), pa_rb.rb_size_t(RB_SIZE), raw_data(rb_data))
 
-pa_rb.WriteRingBuffer(&rb, raw_data(input), i32(len(input)))
-
+pa_rb.WriteRingBuffer(&rb, raw_data(input), pa_rb.rb_size_t(len(input)))
 ```
+
+`rb_size_t` follows `ring_buffer_size_t` in `pa_ringbuffer.h`, `i32` on macOS and iOS, `c.long` elsewhere (64-bit on Linux and Android), so the struct layout matches the C library.
 
 ### Build portaudio ringbuffer on MacOS/Linux
 ```sh

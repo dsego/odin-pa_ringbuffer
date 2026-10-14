@@ -1,5 +1,6 @@
 package pa_ringbuffer
 
+import "core:c"
 
 when ODIN_OS == .Darwin || ODIN_OS == .Linux {
 	// Building on Mac:
@@ -15,7 +16,12 @@ when ODIN_OS == .Darwin || ODIN_OS == .Linux {
 }
 
 
-rb_size_t :: i32
+// ring_buffer_size_t in pa_ringbuffer.h: int32_t on Apple, long everywhere else (64-bit on Linux and Android)
+when ODIN_OS == .Darwin {
+	rb_size_t :: i32
+} else {
+	rb_size_t :: c.long
+}
 
 RingBuffer :: struct {
 	bufferSize:       rb_size_t,
