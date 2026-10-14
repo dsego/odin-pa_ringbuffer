@@ -18,7 +18,7 @@ when ODIN_OS == .Darwin || ODIN_OS == .Linux {
 
 // ring_buffer_size_t in pa_ringbuffer.h: int32_t on Apple, long everywhere else (64-bit on Linux and Android)
 when ODIN_OS == .Darwin {
-	rb_size_t :: i32
+	rb_size_t :: c.int32_t
 } else {
 	rb_size_t :: c.long
 }
